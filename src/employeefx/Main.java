@@ -1,47 +1,82 @@
 package employeefx;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private Label lblid = new Label("ID");
+    private Label lblname = new Label("Name");
+    private Label lblcity = new Label("City");
+    private Label lblposition = new Label("Position");
+    private TextField txtid = new TextField();
+    private TextField txtname = new TextField();
+    private TextField txtcity = new TextField();
+    private TextField txtposition = new TextField();
+    private Button bntfirst = new Button("First");
+    private Button bntnext = new Button("Next");
+    private Button bntprevious = new Button("Previous");
+    private Button bntlast = new Button("Last");
+//    private HBox hbox = new HBox();
+//    private VBox vbox = new VBox();
+//    private Pane pane = new Pane();
+    
     @Override
     public void start(Stage stage) throws Exception {
+
+        bntfirst.setOnAction((e) -> {
+            String first = txtid.getText();
+        });
+
+        bntnext.setOnAction((e) -> {
+
+        });
+
+        bntprevious.setOnAction((e) -> {
+
+        });
+
+        bntlast.setOnAction((e) -> {
+
+        });
+
+        Scene scene = new Scene(getGrid(), 500, 500);
+        stage.setScene(scene);
         stage.show();
     }
+
+    private GridPane getGrid() {
+        GridPane pane = new GridPane();
+        pane.add(lblid, 0, 0);
+        pane.add(txtid, 1, 0);
+        pane.add(lblname, 0, 1);
+        pane.add(txtname, 1, 1);
+        pane.add(lblcity, 0, 2);
+        pane.add(txtcity, 1, 2);
+        pane.add(lblposition, 0, 3);
+        pane.add(txtposition, 1, 3);
+        pane.add(bntfirst, 0, 4);
+        pane.add(bntnext, 1, 4);
+        pane.add(bntprevious, 2, 4);
+        pane.add(bntlast, 3, 4);
+        return pane;
+    }
+    
 
     public static void main(String[] args) {
         Application.launch(args);
     }
 
 }
-//import javafx.application.Application;
-//import javafx.scene.Scene;
-//import javafx.scene.control.TextField;
-//import javafx.scene.layout.GridPane;
-//import javafx.stage.Stage;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class Main extends Application {
-//    private List<Employee> employeeList;
-//
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-//
-//    @Override
-//    public void start(Stage primaryStage) {
-//        // Load data from file into employeeList
-//        employeeList = EmployeeFile.readEmployees();
-//
-//        // Create text fields for displaying first employee's data
-//        TextField idField = new TextField(Integer.toString(employeeList.get(0).getId()));
-//        TextField nameField = new TextField(employeeList.get(0).getName());
-//        TextField cityField = new TextField(employeeList.get(0).getCity());
-//        TextField positionField = new TextField(employeeList.get(0).getPosition());
-//
+
 //        // Disable fields so they can't be edited
 //        idField.setDisable(true);
 //        nameField.setDisable(true);
