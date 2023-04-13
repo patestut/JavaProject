@@ -4,13 +4,15 @@
  * Treesa Saju
  * 991670853
  * Final Project
- * 11th April 2023
+ * 12th April 2023
  */
 package employeefx;
 
 import content.Employee;
 import content.EmployeeFile;
 import content.SearchStage;
+
+
 import java.util.LinkedList;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -22,10 +24,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
-    public static Object getEmployeeManager() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     private Label lblid = new Label("ID");
     private Label lblname = new Label("Name");
@@ -43,10 +41,10 @@ public class Main extends Application {
     private Button bntdelete = new Button("Delete");
     private Button bntadd = new Button("Add");
     private Button bntsearch = new Button("Search");
-    SearchStage one = new SearchStage();
+    private SearchStage Stage = new SearchStage();
 
     private LinkedList<Employee> employeesList = EmployeeFile.readEmployees();
-    private int i = 0;// declared i to call the element from the employeelist
+    private int i = 0;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -59,6 +57,7 @@ public class Main extends Application {
         bntdelete.setOnAction((e) -> getDelete());
         bntadd.setOnAction((e) -> getAdd());
         bntsearch.setOnAction((e) -> getSearch());
+
         Scene scene = new Scene(getGrid(), 500, 500);
         stage.setScene(scene);
         stage.show();
@@ -133,9 +132,11 @@ public class Main extends Application {
             String name = txtname.getText();
             String city = txtcity.getText();
             String position = txtposition.getText();
+
             Employee updatedEmployee = new Employee(id, name, city, position);
             employeesList.set(i, updatedEmployee);
             EmployeeFile.writeEmployees(employeesList);
+
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Employee Updated");
             alert.setHeaderText(null);
@@ -151,9 +152,9 @@ public class Main extends Application {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Employee Deleted");
             alert.setHeaderText(null);
-            alert.setContentText("Do you want to delete?");
             alert.setContentText("The employee was deleted successfully!");
             alert.show();
+
             if (employeesList.isEmpty()) {
                 txtid.setText("");
                 txtname.setText("");
@@ -175,6 +176,7 @@ public class Main extends Application {
         String position = txtposition.getText();
         Employee newEmployee = new Employee(id, name, city, position);
         employeesList.add(newEmployee);
+
         EmployeeFile.writeEmployees(employeesList);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Employee Added");
@@ -184,6 +186,8 @@ public class Main extends Application {
     }
 
     private void getSearch() {
-        
-        }
+        Stage.show();
+
+    }
+
 }
